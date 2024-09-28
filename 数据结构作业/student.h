@@ -10,4 +10,6 @@ public:
 	student();//默认构造函数
 
 	student(int ids, string names, int ages);//有参构造
+
+
 };

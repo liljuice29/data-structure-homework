@@ -1,6 +1,7 @@
 #include<stdio.h>
 #include"sqlist.h"
 #include<iostream>
+
 using namespace std;
 int main()
 {
@@ -16,13 +17,7 @@ int main()
 	student st9(9, "张学良", 109);
 	student st10(10, "维尼修斯", 22);
 
-	//准备被放入的五名学生
-	student st11(11, "康康", 19);
-	student st12(12, "载物", 29);
-	student st13(13, "野原新之助", 7);
-	student st14(14, "静香", 15);
-	student st15(15, "懒洋洋", 6);
-
+	
 	sqlist list;//创建学生列表
 	//把10个学生放入列表
 	list.insert(st1);
@@ -36,16 +31,24 @@ int main()
 	list.insert(st9);
 	list.insert(st10);
 
+	
 	//菜单
 	int select = -1;
-	int n= 0;
-	string dename;
+
 	while (true) {
+		int n = 0;
+		string dename;
+		int stp = 0;
 		cout << "输入你的需求" << endl;
 		cout << " 1  添加学生" << endl;
 		cout << " 2  删除学生" << endl;
 		cout << " 3  按年龄排序" << endl;
 		cout << " 4  显示学生表" << endl;
+		//cout << " 5  销毁学生表" << endl;
+		cout << " 6  判断学生表是否为空" << endl;
+		cout << " 7  求学生表长度" << endl;
+		cout << " 8  查找第i个学生" << endl;
+		cout << " 9  按信息查找学生" << endl;
 		cout << " 0  退出" << endl;
 		cin>> select;
 		switch (select) {
@@ -89,6 +92,78 @@ int main()
 			system("pause");
 			system("cls");
 			break;
+
+		case 5:
+			list.destory();
+		
+			return 0;
+			break;
+		case 6:
+			if (list.listempty())
+				cout << "线性表为空" << endl;
+			else
+				cout << "线性表不为空" << endl;
+			system("pause");
+			system("cls");
+			break;
+		case 7:
+			cout << "学生表长为" << list.listlength();
+			system("pause");
+			system("cls");
+			break;
+		case 8:
+			cout << "请输入你要查找的学生的位序" << endl;
+			
+			cin >> stp;
+			if (stp<=0||stp>list.length) {
+				cout << "输入值有误" << endl;
+				break;
+			}
+			else {
+				cout << "学生姓名" << list.getelem(stp).name <<
+					"学生学号" << list.getelem(stp).id <<
+					"学生年龄" << list.getelem(stp).age << endl;
+			}
+
+			system("pause");
+			system("cls");
+			break;
+		case 9:
+			
+			for (int i = 0; i < 1; i++) {
+				int id = 0;
+				int age = 0;
+				string name;
+				cout << "请输入第" << i + 1 << "个学生id  ";
+				cin >> id;
+				cout << "请输入第" << i + 1 << "个学生姓名  ";
+				cin >> name;
+				cout << "请输入第" << i + 1 << "个学生年龄  ";
+				cin >> age;
+				student st(id, name, age);
+				if (list.locateelem(st) == 0) {
+					cout << "没有找到该学生" << endl;
+				}
+				else {
+					cout << "该学生位于第" << list.locateelem(st) << "位" << endl;
+				}
+			}
+			/*int idm = 0;
+			int agem = 0;
+			string namem;
+			cout << "请输入学生id  ";
+			cin >> idm;
+			cout << "请输入学生姓名  ";
+			cin >> namem;
+			cout << "请输入学生年龄  ";
+			cin >> agem;
+			student stm(idm, namem, agem);*/
+			
+		
+			
+			system("pause");
+			system("cls");
+			break;
 		case 0:
 			return 0;
 			break;
@@ -102,22 +177,4 @@ int main()
 	}
 
 
-
-
-	//插入五名学生
-	list.insert(st11);
-	list.insert(st12);
-	list.insert(st13);
-	list.insert(st14);
-	list.insert(st15);
-
-	//对学生列表按照年龄从小到大排序
-	list.sort();
-	
-	//输出排序结果
-	list.display();
-
-	//删除张三
-	list.listdelete("张三");
-	list.display();
 }

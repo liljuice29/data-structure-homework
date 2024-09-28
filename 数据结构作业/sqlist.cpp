@@ -6,6 +6,51 @@ sqlist::sqlist()
 
 }
 
+bool sqlist::destory()
+{
+	delete this->list;
+
+	this->length = 0;
+	if (this->list == nullptr) {
+		return true;
+	}
+	return false;
+
+}
+
+bool sqlist::listempty()
+{
+	if (this->length == 0) {
+		return true;
+	}
+	else {
+		return false;
+	}
+}
+
+int sqlist::listlength()
+{
+	return this->length;
+}
+
+student sqlist::getelem(int i)
+{
+	
+	return this->list[i - 1];
+
+}
+
+
+int sqlist::locateelem(student st)
+{
+	for (int i = 0; i < this->length; i++) {
+		if (this->list[i].age == st.age && this->list[i].name == st.name && this->list[i].id == st.id) {
+			return i + 1;
+		}
+	}
+	return 0;
+}
+
 void sqlist::insert(student st)
 {
 	if (length >= maxsize)
@@ -33,12 +78,19 @@ void sqlist::sort()
 
 void sqlist::display()
 {
-	int n = this->length;
-	for (int i = 0; i < n; i++) {
-		cout << "学生学号：" << this->list[i].id
-			<< "     学生姓名：" << this->list[i].name
-			<< "     学生年龄：" << this->list[i].age << endl;
+    int n = this->length;
+	if (n == 0) {
+		cout << "当前表为空" << endl;
+		return;
+	}
+	else {
 
+		for (int i = 0; i < n; i++) {
+			cout << "学生学号：" << this->list[i].id
+				<< "     学生姓名：" << this->list[i].name
+				<< "     学生年龄：" << this->list[i].age << endl;
+
+		}
 	}
 }
 
