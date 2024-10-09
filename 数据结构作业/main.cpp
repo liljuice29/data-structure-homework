@@ -1,10 +1,44 @@
 #include<stdio.h>
 #include"sqlist.h"
 #include<iostream>
-
+#include"linklist.h"
 using namespace std;
 int main()
 {
+
+	//链表测试代码
+	//linklist* list1 = new linklist();
+	//list1->insert(1, 1);
+	//list1->insert(3, 2);
+	//list1->display();
+	//cout << "......................" << endl;
+	//list1->listdelete(2);
+	//list1->display();
+	//cout << ".........................." << endl;
+	//cout << list1->listlength();
+	//cout << "......................." << endl;
+	//list1->insert(23, 2);
+	//list1->insert(45, 3);
+	//cout << list1->getelem(3) << endl;
+	//cout << list1->locateelem(23) << endl;
+	//cout << ".........................." << endl;
+	//if (list1->listempty()) {
+	//	cout << "当前为空" << endl;
+	//}
+	//else {
+	//	cout << "当前不为空" << endl;
+	//}
+	//cout << ".........................." << endl;
+	//list1->listdelete(3);
+	//list1->listdelete(2);
+	//list1->listdelete(1);
+	//if (list1->listempty()) {
+	//	cout << "当前为空" << endl;
+	//}
+	//else {
+	//	cout << "当前不为空" << endl;
+	//}
+
 	//数据准备
 	student st1(1, "张三", 18);
 	student st2(2, "李四", 19);
